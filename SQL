@@ -1,0 +1,44 @@
+-- Criação do Banco de Dados
+CREATE DATABASE IF NOT EXISTS Escola;
+USE Escola;
+
+-- Criação da Tabela Cliente_app (assumindo que ela ainda não existe)
+CREATE TABLE Cliente_app (
+    cliente_id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(255) NOT NULL
+);
+
+-- Criação da Tabela EntregaCliente_app
+CREATE TABLE EntregaCliente_app (
+    entrega_id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    cliente_id BIGINT,
+    status VARCHAR(50) NOT NULL,
+    codigo_rastreio VARCHAR(255),
+    FOREIGN KEY (cliente_id) REFERENCES Cliente_app(cliente_id)
+);
+
+-- Criação da Tabela FormaPagamentoCliente_app
+CREATE TABLE FormaPagamentoCliente_app (
+    pagamento_id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    cliente_id BIGINT,
+    tipo VARCHAR(50) NOT NULL,
+    FOREIGN KEY (cliente_id) REFERENCES Cliente_app(cliente_id)
+);
+
+-- Criação da Tabela EntregaClienteAlternativo
+CREATE TABLE EntregaClienteAlternativo_app (
+    entrega_id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    cliente_id BIGINT,
+    status VARCHAR(50) NOT NULL,
+    codigo_rastreio VARCHAR(255),
+    FOREIGN KEY (cliente_id) REFERENCES Cliente_app(cliente_id)
+);
+
+-- Criação de uma tabela para ContasClienteAlternativo
+CREATE TABLE ContasClienteAlternativo_app (
+    conta_id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    cliente_id BIGINT,
+    valor DECIMAL(10, 2) NOT NULL,
+    data_vencimento DATE NOT NULL,
+    FOREIGN KEY (cliente_id) REFERENCES Cliente_app(cliente_id)
+);
