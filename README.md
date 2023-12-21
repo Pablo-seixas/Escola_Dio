@@ -22,3 +22,5 @@ Estrutura do Banco de Dados
 O sistema utiliza um banco de dados chamado "Escola", composto por várias tabelas para armazenar informações relacionadas a clientes, entregas, formas de pagamento e contas alternativas.
 
 Tabela Cliente_ap
+
+![Diagrama do Banco de Dados](https://github.com/Pablo-seixas/Escola_Dio/blob/main/escola.png)
